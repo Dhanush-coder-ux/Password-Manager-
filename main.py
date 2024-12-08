@@ -1,3 +1,4 @@
+
 import flet as ft
 from password import encrypt,decrypt,delet
 import random
