@@ -6,16 +6,13 @@
     pkgs.python3
     pkgs.jdk20
     pkgs.android-studio
-    pkgs.android-sdk
-    pkgs.flutter
+    pkgs.android-sdk # Add Android Studio
   ];
 
   # environment variables
   env = {
     VENV_DIR = ".venv";
     MAIN_FILE = "main.py";
-    ANDROID_HOME = "${pkgs.android-sdk}";
-    PATH = "${pkgs.android-sdk}/bin:${pkgs.android-sdk}/tools:${pkgs.android-sdk}/platform-tools:$PATH";
   };
 
   idx = {
@@ -23,7 +20,6 @@
     extensions = [
       "ms-python.python"
       "ms-python.debugpy"
-      "dart-code.flutter"
     ];
 
     workspace = {
@@ -41,16 +37,6 @@
           # activate virtual env and install requirements
           source $VENV_DIR/bin/activate
           pip install -r requirements.txt
-
-          # Setup Android SDK
-          echo "Setting up Android SDK..."
-          sdkmanager "platform-tools" "platforms;android-33" "build-tools;33.0.0"
-          yes | sdkmanager --licenses
-
-          # Configure Flutter for Android SDK
-          echo "Configuring Flutter..."
-          flutter config --android-sdk=$ANDROID_HOME
-          flutter doctor
         '';
 
         # Open editors for the following files by default, if they exist:
@@ -73,11 +59,6 @@
           # activate virtual env and install requirements
           source $VENV_DIR/bin/activate
           pip install -r requirements.txt
-
-          # Verify Android SDK and Flutter setup
-          echo "Verifying Android SDK setup..."
-          sdkmanager --licenses || true
-          flutter doctor || true
         '';
 
         # Open editors for the following files by default, if they exist:
