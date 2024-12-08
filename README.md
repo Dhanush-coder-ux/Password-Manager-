@@ -1,3 +1,7 @@
+![Screenshot 2024-12-08 115347](https://github.com/user-attachments/assets/56af8d8a-dfaa-4ee4-a153-a7a7925f5f4a)
+
+
+
 Password Manager
 
 This is a simple and secure password manager application built using Flet and Python. The application allows users to store their passwords securely with encryption and decryption functionality, ensuring data confidentiality.
