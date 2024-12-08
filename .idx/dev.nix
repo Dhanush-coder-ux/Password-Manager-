@@ -1,3 +1,5 @@
+# To learn more about how to use Nix to configure your environment
+# see: https://developers.google.com/idx/guides/customize-idx-env
 { pkgs, ... }: {
   # nixpkgs channel
   channel = "stable-23.11";
@@ -5,8 +7,6 @@
   packages = [
     pkgs.python3
     pkgs.jdk20
-    pkgs.android-studio
-    pkgs.android-sdk # Add Android Studio
   ];
 
   # environment variables
